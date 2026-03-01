@@ -4,15 +4,24 @@
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 0 10px;
   background-color: #0000004d;
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  opacity: 0;
+  transition:
+    visibility 0s linear 0.5s,
+    opacity 0.5s linear;
 }
 
 .modal__opened {
   visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__title {

@@ -1,43 +1,43 @@
 export const weatherOptions = [
   {
     day: true,
-    condition: "cloudy",
-    url: new URL("../assetts/day/couldy-day.svg", import.meta.url).href,
+    condition: "clouds",
+    url: new URL("../assets/day/cloudy-day.svg", import.meta.url).href,
   },
   {
     day: true,
-    condition: "fog",
-    url: new URL("../assetts/day/for-day.svg", import.meta.url).href,
+    condition: "mist",
+    url: new URL("../assets/day/fog-day.svg", import.meta.url).href,
   },
   {
     day: true,
     condition: "rain",
-    url: new URL("../assetts/day/rain-day.svg", import.meta.url).href,
+    url: new URL("../assets/day/rain-day.svg", import.meta.url).href,
   },
   {
     day: true,
     condition: "snow",
-    url: new URL("../assetts/day/snow-day.svg", import.meta.url).href,
+    url: new URL("../assets/day/snow-day.svg", import.meta.url).href,
   },
   {
     day: true,
-    condition: "storm",
-    url: new URL("../assetts/day/storm-day.svg", import.meta.url).href,
+    condition: "thunderstorm",
+    url: new URL("../assets/day/storm-day.svg", import.meta.url).href,
   },
   {
     day: true,
     condition: "clear",
-    url: new URL("../assetts/day/sunny-day.svg", import.meta.url).href,
+    url: new URL("../assets/day/sunny-day.svg", import.meta.url).href,
   },
 
   {
     day: false,
-    condition: "cloudy",
+    condition: "clouds",
     url: new URL("../assets/night/cloudy-night.svg", import.meta.url).href,
   },
   {
     day: false,
-    condition: "fog",
+    condition: "mist",
     url: new URL("../assets/night/fog-night.svg", import.meta.url).href,
   },
   {
@@ -57,7 +57,7 @@ export const weatherOptions = [
   },
   {
     day: false,
-    condition: "storm",
+    condition: "thunderstorm",
     url: new URL("../assets/night/storm-night.svg", import.meta.url).href,
   },
 ];
@@ -66,7 +66,7 @@ export const defaultWeatherOptions = {
   day: {
     day: true,
     condition: "default",
-    url: new URL("../assetts/day/default-day.svg", import.meta.url).href,
+    url: new URL("../assets/day/default-day.svg", import.meta.url).href,
   },
   night: {
     day: false,
@@ -139,7 +139,7 @@ export const defaultClothingItems = [
   {
     _id: 11,
     name: "Shorts",
-    weather: "Hot",
+    weather: "hot",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Shorts.png?etag=d728c496643f610de8d8fea92dd915ba",
   },
   {
@@ -179,4 +179,4 @@ export const coordinates = {
   longitude: -71.7614891,
 };
 
-export const APIkey = "e2a34c58e48498ea077d91007d38f1b2";
+export const apiKey = "e2a34c58e48498ea077d91007d38f1b2";
