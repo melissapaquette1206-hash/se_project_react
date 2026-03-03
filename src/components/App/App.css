@@ -1,4 +1,4 @@
-.page {
+/* .page {
   background-color: #f3f3f3;
 }
 
@@ -6,4 +6,18 @@
   max-width: 1360px;
   margin: 0 auto;
   padding: 0 20px;
+} */
+
+.page {
+  min-height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 0;
+  box-sizing: border-box;
 }

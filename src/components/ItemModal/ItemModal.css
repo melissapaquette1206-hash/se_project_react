@@ -1,0 +1,51 @@
+.modal__content_type_image {
+  padding: 0;
+  width: 498px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal__image {
+  height: 498px;
+  width: 498px;
+  display: block;
+  object-fit: cover;
+}
+
+.modal__caption {
+  margin: 0;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.modal__footer {
+  background: #fff;
+  padding: 20px 32px 32px 32px;
+  font-size: 20px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.modal__close_type_preview {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  background-image: url("../../assets/close-icon-white.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.modal__weather {
+  margin: 0;
+  line-height: 24px;
+}

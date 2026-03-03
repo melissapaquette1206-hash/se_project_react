@@ -11,10 +11,12 @@
 } */
 
 .cards__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* flex-wrap: wrap; */
   margin: 0;
   padding: 0;
   list-style-type: none;
-  gap: 21px;
+  grid-template-columns: repeat(auto-fit, 325px);
+  justify-content: start;
+  gap: 20px;
 }

@@ -42,7 +42,7 @@ function App() {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch(console.log);
+      .catch(console.error);
   }, []);
 
   return (
@@ -52,15 +52,17 @@ function App() {
         <Main
           weatherData={weatherData}
           handleCardClick={handleCardClick}
-          clothingItems={ClothingItems}
+          clothingItems={clothingItems}
         />
+        <Footer />
       </div>
-      <Footer />
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
         activeModal={activeModal}
         onClose={closeActiveModal}
+        //  name="add-garment"
+        // isOpen={activeModal === "add-garment"}
       >
         <label htmlFor="name" className="modal__label">
           Name{" "}
@@ -69,6 +71,7 @@ function App() {
             className="modal__input"
             id="name"
             placeholder="Name"
+            required
           />
         </label>
         <label htmlFor="imageURL" className="modal__label">
@@ -78,6 +81,7 @@ function App() {
             className="modal__input"
             id="imageURL"
             placeholder="Image URL"
+            required
           />
         </label>
         <fieldset className="modal__radio-buttons">
@@ -89,7 +93,7 @@ function App() {
               name="weather"
               value="hot"
               className="modal__radio-input"
-            />
+            />{" "}
             Hot
           </label>
           <label
@@ -102,7 +106,7 @@ function App() {
               name="weather"
               value="warm"
               className="modal__radio-input"
-            />
+            />{" "}
             Warm
           </label>
           <label
@@ -115,7 +119,7 @@ function App() {
               name="weather"
               value="cold"
               className="modal__radio-input"
-            />
+            />{" "}
             Cold
           </label>
         </fieldset>

@@ -3,8 +3,6 @@
   justify-content: space-between;
   margin-top: 85px;
   padding: 0;
-}
-.footer__developer {
   font-family:
     Cabinet Grotesk,
     sans-serif;
@@ -12,6 +10,8 @@
   font-style: Medium;
   font-size: 16px;
   line-height: 20px;
+}
+.footer__developer {
   margin: 0;
 }
 
