@@ -11,7 +11,7 @@ export const getWeather = ({ latitude, longitude }, apiKey) => {
 };
 
 export const filterWeatherData = (data) => {
-  const result = { weatherData };
+  const result = {};
   result.city = data.name;
   result.temp = { F: data.main.temp };
   result.type = getWeatherType(result.temp.F);

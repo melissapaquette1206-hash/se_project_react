@@ -1,6 +1,7 @@
 # WTWR (What to Wear?)
 
-A React-based weather application that helps users choose appropriate clothing based on current weather conditions.
+This project is a weather-based clothing recommendation app built with React.
+It displays weather data and suggests clothing items appropriate for the temperature.
 
 ## Features
 
