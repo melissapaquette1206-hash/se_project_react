@@ -19,7 +19,7 @@ function ModalWithForm({
             className="modal__close-icon"
           />
         </button>
-        <form className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}
