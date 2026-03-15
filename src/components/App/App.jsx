@@ -1,19 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import "./App.css";
-import {
-  coordinates,
-  apiKey,
-  defaultClothingItems,
-} from "../../utils/constants";
+import { coordinates, apiKey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
+import Profile from "../Profile/Profile";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import { addItem, deleteItem, getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -25,7 +23,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState();
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
@@ -41,13 +39,41 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const onAddItem = (data) => {
+  const handleDeleteClick = (card) => {
+    setSelectedCard(card);
+    setActiveModal("confirm-delete");
+  };
+
+  const onAddItem = (inputValues) => {
     const newCardData = {
-      name: data.name,
-      link: data.link,
-      weather: data.weather,
+      name: inputValues.name,
+      imageUrl: inputValues.imageUrl,
+      weather: inputValues.weather,
     };
-    setClothingItems([...clothingItems, data]);
+
+    AddItemModal(newCardData)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleDeleteItem = (item = selectedCard) => {
+    const id = item?._id ?? item?.id;
+    if (!id) {
+      return;
+    }
+    deleteItem(id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter(
+            (existingItem) => (existingItem._id ?? existingItem.id) !== id,
+          ),
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const closeActiveModal = () => {
@@ -76,6 +102,18 @@ function App() {
       .catch(console.error);
   }, []);
 
+  getItems()
+    .then((data) => {
+      const normalizedItems = data
+        .map((item) => ({
+          ...item,
+          imageUrl: item.imageUrl ?? item.link,
+        }))
+        .reverse();
+      setClothingItems(normalizedItems);
+    })
+    .catch(console.error);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -94,20 +132,22 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<p>PROFILE</p>} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
+                />
+              }
+            />
           </Routes>
 
           <Footer />
         </div>
-        <ModalWithForm
-        // title="New garment"
-        // buttonText="Add garment"
-        // name="add-garment"
-        // isOpen={activeModal === "add-garment"}
-        // onClose={closeActiveModal}
-        ></ModalWithForm>
         <AddItemModal>
-          onClose={closeAllModals}
+          onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
           onAddItem={onAddItem}
         </AddItemModal>
@@ -119,6 +159,11 @@ function App() {
           name="add-garment"
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
+        />
+        <DeleteConfirmationModal
+          isOpen={activeModal === "confirm-delete"}
+          onClose={closeActiveModal}
+          onDelete={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

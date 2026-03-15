@@ -36,3 +36,30 @@ const getWeatherType = (temperature) => {
     return "cold";
   }
 };
+
+// const normalizeCondition = (main) => {
+//   const value = main.toLowerCase();
+
+//   if (value === "clear") return "clear";
+//   if (value === "clouds") return "cloudy";
+//   if (value === "rain" || value === "drizzle") return "rain";
+//   if (value === "thunderstorm") return "storm";
+//   if (value === "snow") return "snow";
+//   if (
+//     [
+//       "mist",
+//       "smoke",
+//       "haze",
+//       "dust",
+//       "fog",
+//       "sand",
+//       "ash",
+//       "squall",
+//       "tornado",
+//     ].includes(value)
+//   ) {
+//     return "fog";
+//   }
+
+//   return "clear";
+// };
