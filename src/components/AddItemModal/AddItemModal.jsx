@@ -7,18 +7,17 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddItem();
+    onAddItem(values);
   }
 
   return (
-    <ModalWithForm>
-      <label
-        htmlFor="name"
-        className="modal__label"
-        onClose={onClose}
-        onSubmit={handleSubmit}
-        isOpen={isOpen}
-      >
+    <ModalWithForm
+      title="New garment"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      <label htmlFor="name" className="modal__label">
         Name{" "}
         <input
           type="text"

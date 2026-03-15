@@ -94,7 +94,7 @@
   display: initial;
 }
 
-.modal__radio-button:checked + .modal__label_type_radio {
+.modal__radio-input:checked + .modal__label_type_radio {
   color: #000;
 }
 
