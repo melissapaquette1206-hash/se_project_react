@@ -44,7 +44,7 @@ function App() {
     setActiveModal("confirm-delete");
   };
 
-  const onAddItem = (inputValues) => {
+  const onAddItem = (inputValues, resetForm) => {
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
@@ -55,10 +55,10 @@ function App() {
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
+        resetForm();
       })
       .catch(console.error);
   };
-
   const handleDeleteItem = (item = selectedCard) => {
     const id = item?._id ?? item?.id;
     if (!id) {
@@ -148,11 +148,11 @@ function App() {
 
           <Footer />
         </div>
-        <AddItemModal>
+        <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
           onAddItem={onAddItem}
-        </AddItemModal>
+        />
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}

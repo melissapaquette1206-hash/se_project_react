@@ -9,8 +9,8 @@ function ItemModal({ activeModal, onClose, card, onDeleteClick }) {
   };
 
   return (
-    <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
-      <div className="modal__content modal__content_type_image">
+    <div className="modal" onClick={onClose}>
+      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
           type="button"
