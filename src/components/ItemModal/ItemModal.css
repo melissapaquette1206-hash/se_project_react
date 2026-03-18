@@ -45,6 +45,11 @@
   background-size: contain;
 }
 
+.modal__content_type_image {
+  background-color: #fff;
+  position: relative;
+}
+
 .modal__weather {
   margin: 0;
   line-height: 24px;
@@ -58,4 +63,6 @@
   color: #ff4d4f;
   font-weight: 700;
   cursor: pointer;
+  margin-left: auto;
+  display: block;
 }
