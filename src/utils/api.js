@@ -21,3 +21,14 @@ export const deleteItem = (itemID) =>
     method: "DELETE",
     headers,
   }).then(handleServerResponse);
+
+export const addItem = (data, token) => {
+  return fetch(`${BASE_URL}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  }).then((res) => (res.ok ? res.json() : Promise.reject(res)));
+};

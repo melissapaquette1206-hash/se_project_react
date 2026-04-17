@@ -1,6 +1,10 @@
 import "./ItemModal.css";
 import closeIcon from "../../assets/close-icon-white.svg";
 
+const isOwn = selectedCard.owner === currentUser._id;
+
+const itemDeleteButtonClassName = `modal__delete-button ${isOwn ? "" : "modal__delete-button_hidden"}`;
+
 function ItemModal({ activeModal, onClose, card, onDeleteClick }) {
   const handleDeleteClick = () => {
     if (onDeleteClick) {
