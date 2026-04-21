@@ -1,80 +1,47 @@
-import { useState } from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onLogin, onSignUpClick }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const { values, handleChange, resetForm } = useForm();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!email || !password) return;
-
-    setError(false);
-
-    Promise.resolve(onLogin({ email, password })).catch(() => {
-      setError(true);
-    });
+    onLogin(values).then(() => resetForm());
   };
 
-  const isDisabled = !email || !password;
-
   return (
-    <ModalWithForm
-      title="Login"
-      buttonText="Log In"
-      name="login"
-      isOpen={isOpen}
-      onClose={onClose}
-      onSubmit={handleSubmit}
-      isDisabled={isDisabled}
-      hideSubmit={true}
-    >
-      <label className="modal__label">
-        Email
-        <input
-          type="email"
-          className="modal__input"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (error) setError(false);
-          }}
-          placeholder="Email"
-          required
-        />
-      </label>
+    isOpen && (
+      <div className="modal">
+        <form className="modal__form" onSubmit={handleSubmit}>
+          <h2>Log In</h2>
 
-      <label className="modal__label">
-        {error ? "Incorrect password" : "Password"}
-        <input
-          type="password"
-          className={`modal__input ${error ? "modal__input_error" : ""}`}
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            if (error) setError(false);
-          }}
-          placeholder="Password"
-          required
-        />
-      </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={values.email || ""}
+            onChange={handleChange}
+            required
+          />
 
-      {error && <p className="modal__error">Email or password incorrect</p>}
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={values.password || ""}
+            onChange={handleChange}
+            required
+          />
 
-      <div className="modal__actions">
-        <button type="submit" className="modal__submit" disabled={isDisabled}>
-          Log In
-        </button>
-
-        <span className="modal__switch">
+          <button type="submit">Log In</button>
           <button type="button" onClick={onSignUpClick}>
-            or Sign Up
+            Sign Up
           </button>
-        </span>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
+        </form>
       </div>
-    </ModalWithForm>
+    )
   );
 }
 

@@ -1,114 +1,65 @@
-import { useState } from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./RegisterModal.css";
+import { useForm } from "../../hooks/useForm";
 
 function RegisterModal({ isOpen, onClose, onRegister, onLogInClick }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [error, setError] = useState(false);
+  const { values, handleChange, resetForm } = useForm();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!email || !password || !name || !avatar) return;
-
-    setError(false);
-
-    Promise.resolve(onRegister({ name, avatar, email, password })).catch(() =>
-      setError(true),
-    );
+    onRegister(values).then(() => resetForm());
   };
 
-  const isDisabled = !email || !password || !name || !avatar;
-
   return (
-    <ModalWithForm
-      name="register"
-      title="Sign Up"
-      isOpen={isOpen}
-      onClose={onClose}
-      onSubmit={handleSubmit}
-      isDisabled={isDisabled}
-      hideSubmit
-    >
-      <label className="modal__label">
-        Email*
-        <input
-          type="email"
-          className="modal__input"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (error) setError(false);
-          }}
-          placeholder="Email"
-          required
-        />
-      </label>
+    isOpen && (
+      <div className="modal">
+        <form className="modal__form" onSubmit={handleSubmit}>
+          <h2>Sign Up</h2>
 
-      <label className="modal__label">
-        Password*
-        <input
-          type="password"
-          className="modal__input"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            if (error) setError(false);
-          }}
-          placeholder="Password"
-          required
-        />
-      </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={values.name || ""}
+            onChange={handleChange}
+            required
+          />
 
-      <label className="modal__label">
-        Name*
-        <input
-          type="text"
-          className="modal__input"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            if (error) setError(false);
-          }}
-          placeholder="Name"
-          required
-        />
-      </label>
+          <input
+            type="url"
+            name="avatar"
+            placeholder="Avatar URL"
+            value={values.avatar || ""}
+            onChange={handleChange}
+            required
+          />
 
-      <label className="modal__label">
-        Avatar URL*
-        <input
-          type="url"
-          className="modal__input"
-          value={avatar}
-          onChange={(e) => {
-            setAvatar(e.target.value);
-            if (error) setError(false);
-          }}
-          placeholder="Avatar URL"
-          required
-        />
-      </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={values.email || ""}
+            onChange={handleChange}
+            required
+          />
 
-      {error && (
-        <p className="modal__error">Registration failed. Please try again.</p>
-      )}
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={values.password || ""}
+            onChange={handleChange}
+            required
+          />
 
-      <div className="modal__actions">
-        <button type="submit" className="modal__submit" disabled={isDisabled}>
-          Sign Up
-        </button>
-
-        <span className="modal__switch">
+          <button type="submit">Register</button>
           <button type="button" onClick={onLogInClick}>
-            or Log In
+            Log In
           </button>
-        </span>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
+        </form>
       </div>
-    </ModalWithForm>
+    )
   );
 }
 

@@ -1,58 +1,56 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
-function EditProfileModal({ onClose, onUpdateUser }) {
+function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
-
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const { values, handleChange, setValues, resetForm } = useForm();
 
   useEffect(() => {
     if (currentUser) {
-      setName(currentUser.name || "");
-      setAvatar(currentUser.avatar || "");
+      setValues({
+        name: currentUser.name || "",
+        avatar: currentUser.avatar || "",
+      });
     }
-  }, [currentUser]);
+  }, [currentUser, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser({ name, avatar });
+    onUpdateUser(values).then(() => resetForm());
   };
 
   return (
-    <ModalWithForm
-      title="Edit Profile"
-      buttonText="Save"
-      onClose={onClose}
-      onSubmit={handleSubmit}
-      name="edit-profile"
-      isOpen={true}
-    >
-      <label className="modal__label">
-        Name
-        <input
-          type="text"
-          className="modal__input"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          minLength="2"
-          maxLength="40"
-        />
-      </label>
+    isOpen && (
+      <div className="modal">
+        <form className="modal__form" onSubmit={handleSubmit}>
+          <h2>Edit Profile</h2>
 
-      <label className="modal__label">
-        Avatar URL
-        <input
-          type="url"
-          className="modal__input"
-          value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
-          required
-        />
-      </label>
-    </ModalWithForm>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={values.name || ""}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="url"
+            name="avatar"
+            placeholder="Avatar URL"
+            value={values.avatar || ""}
+            onChange={handleChange}
+            required
+          />
+
+          <button type="submit">Save</button>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
+        </form>
+      </div>
+    )
   );
 }
 
