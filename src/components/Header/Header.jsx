@@ -10,6 +10,9 @@ function Header({ handleAddClick, weatherData }) {
     day: "numeric",
   });
 
+  const currentUser = useContext(CurrentUserContext);
+  const isLoggedIn = !!currentUser;
+
   return (
     <header className="header">
       <NavLink to="/">
@@ -38,6 +41,20 @@ function Header({ handleAddClick, weatherData }) {
           </div>
         </NavLink>
       </div>
+      {isLoggedIn ? (
+        <div>
+          <button onClick={handleAddClick}>+ Add clothes</button>
+          <div>
+            <span>{currentUser.name}</span>
+            <img src={currentUser.avatar} alt={currentUser.name} />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <button onClick={openLogin}>Sign In</button>
+          <button onClick={openRegister}>Register</button>
+        </div>
+      )}
     </header>
   );
 }
