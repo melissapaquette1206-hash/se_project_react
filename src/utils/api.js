@@ -29,17 +29,6 @@ export const deleteItem = (itemId, token) => {
   }).then(handleServerResponse);
 };
 
-export const addItem = (data, token) => {
-  return fetch(`${BASE_URL}/items`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  }).then((res) => (res.ok ? res.json() : Promise.reject(res)));
-};
-
 export const addCardLike = (cardId, token) => {
   return fetch(`${baseUrl}/cards/${cardId}/likes`, {
     method: "PUT",

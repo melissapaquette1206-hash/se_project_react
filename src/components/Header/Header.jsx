@@ -3,8 +3,10 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -23,38 +25,21 @@ function Header({ handleAddClick, weatherData }) {
       </p>
       <div className="header__right">
         <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-button"
-        >
-          + Add clothes
-        </button>
-        <NavLink className="header__nav-link" to="/profile">
-          <div className="header__user-container">
-            <p className="header__username">Terrence Tegegne</p>
-            <img
-              src={avatar}
-              alt="Terrence Tegegne"
-              className="header__avatar"
-            />
-          </div>
-        </NavLink>
-      </div>
-      {isLoggedIn ? (
-        <div>
-          <button onClick={handleAddClick}>+ Add clothes</button>
+        {isLoggedIn ? (
           <div>
-            <span>{currentUser.name}</span>
-            <img src={currentUser.avatar} alt={currentUser.name} />
+            <button onClick={handleAddClick}>+ Add clothes</button>
+            <div>
+              <span>{currentUser.name}</span>
+              <img src={currentUser.avatar} alt={currentUser.name} />
+            </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <button onClick={openLogin}>Sign In</button>
-          <button onClick={openRegister}>Register</button>
-        </div>
-      )}
+        ) : (
+          <div>
+            <button onClick={openLogin}>Sign In</button>
+            <button onClick={openRegister}>Register</button>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
