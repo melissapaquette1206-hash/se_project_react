@@ -188,7 +188,7 @@ function App() {
 
     setIsItemsLoading(true);
     getItems()
-      .then(setClothingItems)
+      .then((items) => setClothingItems(items.data))
       .catch(console.error)
       .finally(() => setIsItemsLoading(false));
   }, []);

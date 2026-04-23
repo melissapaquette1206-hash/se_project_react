@@ -36,7 +36,7 @@ export const addCardLike = (cardId, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then(checkResponse);
+  }).then(handleServerResponse);
 };
 
 export const removeCardLike = (cardId, token) => {
@@ -46,5 +46,16 @@ export const removeCardLike = (cardId, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then(checkResponse);
+  }).then(handleServerResponse);
+};
+
+export const updateUser = (userData, token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(userData),
+  }).then(handleServerResponse);
 };

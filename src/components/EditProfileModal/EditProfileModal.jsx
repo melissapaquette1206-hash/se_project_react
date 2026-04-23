@@ -4,7 +4,10 @@ import { useForm } from "../../hooks/useForm";
 
 function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
-  const { values, handleChange, setValues, resetForm } = useForm();
+  const { values, handleChange, setValues, resetForm } = useForm({
+    name: currentUser.name || "",
+    avatar: currentUser.avatar || "",
+  });
 
   useEffect(() => {
     if (currentUser) {
@@ -21,36 +24,29 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
   };
 
   return (
-    isOpen && (
-      <div className="modal">
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <h2>Edit Profile</h2>
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={values.name || ""}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="url"
-            name="avatar"
-            placeholder="Avatar URL"
-            value={values.avatar || ""}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit">Save</button>
-          <button type="button" onClick={onClose}>
-            Close
-          </button>
-        </form>
-      </div>
-    )
+    <ModalWithForm
+      title="Edit Profile"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={values.name || ""}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="url"
+        name="avatar"
+        placeholder="Avatar URL"
+        value={values.avatar || ""}
+        onChange={handleChange}
+        required
+      />
+    </ModalWithForm>
   );
 }
 

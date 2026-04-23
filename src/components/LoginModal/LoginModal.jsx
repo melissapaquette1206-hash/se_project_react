@@ -1,7 +1,10 @@
 import { useForm } from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onLogin, onSignUpClick }) {
-  const { values, handleChange, resetForm } = useForm();
+  const { values, handleChange, resetForm } = useForm({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -9,39 +12,32 @@ function LoginModal({ isOpen, onClose, onLogin, onSignUpClick }) {
   };
 
   return (
-    isOpen && (
-      <div className="modal">
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <h2>Log In</h2>
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={values.email || ""}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={values.password || ""}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit">Log In</button>
-          <button type="button" onClick={onSignUpClick}>
-            Sign Up
-          </button>
-          <button type="button" onClick={onClose}>
-            Close
-          </button>
-        </form>
-      </div>
-    )
+    <ModalWithForm
+      title="Log In"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="email"
+        name="email"
+        value={values.email}
+        onChange={handleChange}
+        placeholder="Email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        value={values.password}
+        onChange={handleChange}
+        placeholder="Password"
+        required
+      />
+      <button type="button" onClick={onSignUpClick}>
+        or Sign Up
+      </button>
+    </ModalWithForm>
   );
 }
 
