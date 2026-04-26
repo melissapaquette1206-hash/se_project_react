@@ -6,15 +6,15 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, setValues, resetForm } = useForm({
-    name: currentUser.name || "",
-    avatar: currentUser.avatar || "",
+    name: currentUser?.name || "",
+    avatar: currentUser?.avatar || "",
   });
 
   useEffect(() => {
     if (currentUser) {
       setValues({
-        name: currentUser.name || "",
-        avatar: currentUser.avatar || "",
+        name: currentUser?.name || "",
+        avatar: currentUser?.avatar || "",
       });
     }
   }, [currentUser, setValues]);
