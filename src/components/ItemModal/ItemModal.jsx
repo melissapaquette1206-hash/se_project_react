@@ -2,10 +2,10 @@ import "./ItemModal.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemModal({ activeModal, onClose, card, onDeleteClick }) {
+function ItemModal({ activeModal, onClose, card, onDeleteCard }) {
   const handleDeleteClick = () => {
-    if (onDeleteClick) {
-      onDeleteClick(card);
+    if (onDeleteCard) {
+      onDeleteCard(card);
     }
   };
 
@@ -35,7 +35,7 @@ function ItemModal({ activeModal, onClose, card, onDeleteClick }) {
         </div>
         <button
           type="button"
-          className="modal__delete"
+          className={itemDeleteButtonClassName}
           onClick={handleDeleteClick}
         >
           Delete item

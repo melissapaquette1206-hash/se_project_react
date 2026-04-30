@@ -10,7 +10,7 @@ import {
   deleteItem,
   addCardLike,
   removeCardLike,
-  // updateUser,
+  updateUser,
 } from "../../utils/api";
 import { authorize, register, checkToken } from "../../utils/auth";
 

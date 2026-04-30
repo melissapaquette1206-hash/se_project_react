@@ -28,10 +28,10 @@ function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
         {isLoggedIn ? (
           <div>
             <button onClick={handleAddClick}>+ Add clothes</button>
-            <div>
+            <NavLink to="/profile">
               <span>{currentUser.name}</span>
               <img src={currentUser.avatar} alt={currentUser.name} />
-            </div>
+            </NavLink>
           </div>
         ) : (
           <div>

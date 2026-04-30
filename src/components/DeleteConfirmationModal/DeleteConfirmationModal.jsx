@@ -1,10 +1,10 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./DeleteConfirmationModal.css";
 
-function DeleteConfirmationModal({ isOpen, onClose, onDelete }) {
+function DeleteConfirmationModal({ isOpen, onCancel, onConfirm }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onDelete();
+    onConfirm();
   };
 
   return (
@@ -13,7 +13,7 @@ function DeleteConfirmationModal({ isOpen, onClose, onDelete }) {
       name="confirm-delete"
       buttonText="Yes, delete item"
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={onCancel}
       onSubmit={handleSubmit}
     >
       <p className="modal__confirm-text">
@@ -21,7 +21,7 @@ function DeleteConfirmationModal({ isOpen, onClose, onDelete }) {
         <br />
         This action is irreversible.
       </p>
-      <button type="button" className="modal__cancel" onClick={onClose}>
+      <button type="button" className="modal__cancel" onClose={onCancel}>
         Cancel
       </button>
     </ModalWithForm>

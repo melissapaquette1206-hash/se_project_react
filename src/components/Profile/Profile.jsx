@@ -4,16 +4,20 @@ import SideBar from "../SideBar/SideBar";
 
 export default function Profile({
   clothingItems,
-  handleCardClick,
+  onCardClick,
   onAddClick,
+  onSignOut,
+  onEditProfile,
+  onCardLike,
 }) {
   return (
     <section className="profile">
-      <SideBar />
+      <SideBar onSignOut={onSignOut} onEditProfile={onEditProfile} />
       <ClothesSection
-        handleCardClick={handleCardClick}
+        onCardClick={onCardClick}
         clothingItems={clothingItems}
         onAddClick={onAddClick}
+        onCardLike={onCardLike}
       />
     </section>
   );
