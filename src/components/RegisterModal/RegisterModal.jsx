@@ -21,44 +21,76 @@ function RegisterModal({ isOpen, onClose, onRegister, onLogInClick }) {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={values.name || ""}
-        onChange={handleChange}
-        required
-      />
+      <label className="modal__label">
+        <span className="modal__label-text">Email*</span>
+        <input
+          className="modal__input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={values.email}
+          onChange={handleChange}
+          required
+        />
+      </label>
 
-      <input
-        type="url"
-        name="avatar"
-        placeholder="Avatar URL"
-        value={values.avatar || ""}
-        onChange={handleChange}
-        required
-      />
+      <label className="modal__label">
+        <span className="modal__label-text">Password*</span>
+        <input
+          className="modal__input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={values.password}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <label className="modal__label">
+        <span className="modal__label-text">Name*</span>
+        <input
+          className="modal__input"
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={values.name}
+          onChange={handleChange}
+          required
+        />
+      </label>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={values.email || ""}
-        onChange={handleChange}
-        required
-      />
+      <label className="modal__label">
+        <span className="modal__label-text">Avatar URL*</span>
+        <input
+          className="modal__input"
+          type="url"
+          name="avatar"
+          placeholder="Avatar URL"
+          value={values.avatar}
+          onChange={handleChange}
+          required
+        />
+      </label>
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={values.password || ""}
-        onChange={handleChange}
-        required
-      />
-      <button type="button" onClick={onLogInClick}>
-        or Log In
-      </button>
+      <div className="modal__button-container">
+        <button
+          type="submit"
+          className="modal__submit-button"
+          disabled={
+            !values.email || !values.password || !values.name || !values.avatar
+          }
+        >
+          Sign Up
+        </button>
+
+        <button
+          type="button"
+          className="modal__link-button"
+          onClick={onLogInClick}
+        >
+          or Log In
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

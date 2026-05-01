@@ -19,25 +19,48 @@ function LoginModal({ isOpen, onClose, onLogin, onSignUpClick }) {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <input
-        type="email"
-        name="email"
-        value={values.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        value={values.password}
-        onChange={handleChange}
-        placeholder="Password"
-        required
-      />
-      <button type="button" onClick={onSignUpClick}>
-        or Sign Up
-      </button>
+      <label className="modal__label">
+        Email
+        <input
+          className="modal__input"
+          type="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+      </label>
+
+      <label className="modal__label">
+        Password
+        <input
+          className="modal__input"
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+          placeholder="Password"
+          required
+        />
+      </label>
+
+      <div className="modal__button-container">
+        <button
+          className="modal__submit-button"
+          type="submit"
+          disabled={!values.email || !values.password}
+        >
+          Log In
+        </button>
+        <button
+          className="modal__link-button"
+          type="button"
+          onClick={onSignUpClick}
+        >
+          or Sign Up
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

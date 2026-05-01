@@ -27,16 +27,25 @@ function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
         <ToggleSwitch />
         {isLoggedIn ? (
           <div>
-            <button onClick={handleAddClick}>+ Add clothes</button>
+            <button
+              className="header__add-clothes-button"
+              onClick={handleAddClick}
+            >
+              + Add clothes
+            </button>
             <NavLink to="/profile">
               <span>{currentUser.name}</span>
               <img src={currentUser.avatar} alt={currentUser.name} />
             </NavLink>
           </div>
         ) : (
-          <div>
-            <button onClick={openLogin}>Sign In</button>
-            <button onClick={openRegister}>Register</button>
+          <div className="header__auth-buttons">
+            <button className="header__sign-in-button" onClick={openLogin}>
+              Sign In
+            </button>
+            <button className="header__register-button" onClick={openRegister}>
+              Register
+            </button>
           </div>
         )}
       </div>

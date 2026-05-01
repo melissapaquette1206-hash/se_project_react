@@ -20,9 +20,10 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         onClick={handleCardClick}
       />
       <button
-        className={isLiked ? "card__like_active" : "card__like"}
-        onClick={onCardLike}
-      />
+        onClick={() => handleCardLike({ _id: card._id, likes: card.likes })}
+      >
+        Like
+      </button>
     </li>
   );
 }
