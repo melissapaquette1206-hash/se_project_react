@@ -33,9 +33,13 @@ function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
             >
               + Add clothes
             </button>
-            <NavLink to="/profile">
-              <span>{currentUser.name}</span>
-              <img src={currentUser.avatar} alt={currentUser.name} />
+            <NavLink to="/profile" className="header__profile-link">
+              <span className="header__username">{currentUser.name}</span>
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className="header__avatar"
+              />
             </NavLink>
           </div>
         ) : (
