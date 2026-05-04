@@ -4,29 +4,34 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
-  const handleCardClick = () => {
-    onCardClick(item);
-  };
-  const isLiked =
-    currentUser && item.likes.some((id) => id === currentUser._id);
+
+  const isLiked = currentUser
+    ? item.likes?.some((id) => id === currentUser._id)
+    : false;
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
-      <img
-        className="card__image"
-        src={item.imageUrl}
-        alt={item.name}
-        onClick={handleCardClick}
-      />
-      {currentUser && (
-        <button
-          className={`card__like-button ${isLiked ? "card__like-button_active" : ""}`}
-          onClick={() => handleCardLike({ _id: item._id, likes: item.likes })}
-        >
-          Like
-        </button>
-      )}
+      <button
+        className="card__image-button"
+        onClick={() => onCardClick(item)}
+        aria-label={`View ${item.name}`}
+      >
+        <img className="card__image" src={item.imageUrl} alt={item.name} />
+      </button>
+
+      <div className="card__content">
+        <h2 className="card__name">{item.name}</h2>
+
+        {currentUser?._id && (
+          <button
+            className={`card__like-button ${
+              isLiked ? "card__like-button_active" : ""
+            }`}
+            onClick={() => onCardLike(item)}
+            aria-label="Like item"
+          />
+        )}
+      </div>
     </li>
   );
 }

@@ -4,10 +4,10 @@ import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
-  const currentDate = new Date().toLocaleString("default", {
+  const currentDate = new Date().toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
   });
@@ -17,31 +17,39 @@ function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
 
   return (
     <header className="header">
-      <NavLink to="/">
+      {/* LEFT: LOGO */}
+      <NavLink to="/" className="header__logo-link">
         <img className="header__logo" src={logo} alt="WTWR logo" />
       </NavLink>
-      <p className="header__date-location">
-        {currentDate}, {weatherData.city}
-      </p>
-      <div className="header__right">
+
+      {/* CENTER: DATE + LOCATION */}
+      <div className="header__info">
+        <p className="header__date">{currentDate}</p>
+        <p className="header__location">{weatherData.city}</p>
+      </div>
+
+      {/* RIGHT: CONTROLS */}
+      <div className="header__controls">
         <ToggleSwitch />
+
         {isLoggedIn ? (
-          <div>
+          <>
             <button
               className="header__add-clothes-button"
               onClick={handleAddClick}
             >
               + Add clothes
             </button>
+
             <NavLink to="/profile" className="header__profile-link">
               <span className="header__username">{currentUser.name}</span>
               <img
-                src={currentUser.avatar}
+                src={currentUser.avatar || avatar}
                 alt={currentUser.name}
                 className="header__avatar"
               />
             </NavLink>
-          </div>
+          </>
         ) : (
           <div className="header__auth-buttons">
             <button className="header__sign-in-button" onClick={openLogin}>

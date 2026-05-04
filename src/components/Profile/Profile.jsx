@@ -11,14 +11,16 @@ export default function Profile({
   onCardLike,
 }) {
   return (
-    <section className="profile">
-      <SideBar onSignOut={onSignOut} onEditProfile={onEditProfile} />
-      <ClothesSection
-        onCardClick={onCardClick}
-        clothingItems={clothingItems}
-        onAddClick={onAddClick}
-        onCardLike={onCardLike}
-      />
-    </section>
+    <main className="profile">
+      <div className="profile__container">
+        <SideBar onSignOut={onSignOut} onEditProfile={onEditProfile} />
+        <ClothesSection
+          onCardClick={onCardClick}
+          clothingItems={clothingItems}
+          onAddClick={onAddClick}
+          onCardLike={onCardLike}
+        />
+      </div>
+    </main>
   );
 }

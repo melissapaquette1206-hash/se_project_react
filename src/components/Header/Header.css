@@ -1,112 +1,83 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 32px 0 28px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  line-height: 100%;
-  color: #000000;
+  color: #000;
 }
 
+/* LOGO */
 .header__logo {
   margin-right: 24px;
 }
 
-.header__date-location {
-  padding: 0;
-  margin: 11px 0 5px;
-  font-family:
-    Cabinet Grotesk,
-    sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+/* DATE + LOCATION */
+.header__info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.header__right {
-  margin-left: auto;
+.header__date {
+  margin: 0;
+}
+
+.header__location {
+  margin: 0;
+}
+
+/* RIGHT SIDE */
+.header__controls {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
+/* ADD BUTTON */
 .header__add-clothes-button {
-  margin: 0;
-  padding: 0;
-  font-family:
-    Cabinet Grotesk,
-    sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
   border: none;
-  background-color: transparent;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
 }
 
-.header__user-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.header__add-clothes-button:hover {
+  opacity: 0.6;
 }
 
-.header__username {
-  margin: 0 0 10px 20px;
-  font-family:
-    Cabinet Grotesk,
-    sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-}
-
-.header__nav-link {
-  color: black;
-  text-decoration: none;
-}
-
+/* AUTH BUTTONS */
 .header__auth-buttons {
   display: flex;
   gap: 20px;
 }
 
-.header__sign-in-button {
-  margin: 0;
-  padding: 0;
-  font-family:
-    Cabinet Grotesk,
-    sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  border: none;
-  background-color: transparent;
-}
-
+.header__sign-in-button,
 .header__register-button {
-  margin: 0;
-  padding: 0;
-  font-family:
-    Cabinet Grotesk,
-    sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
   border: none;
-  background-color: transparent;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
 }
 
+.header__sign-in-button:hover,
+.header__register-button:hover {
+  opacity: 0.6;
+}
+
+/* PROFILE */
 .header__profile-link {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  color: inherit;
 }
 
 .header__username {
-  font-family: Cabinet Grotesk;
-  font-size: 20px;
-  font-weight: 700;
-  color: #000;
+  margin: 0;
 }
 
 .header__avatar {
