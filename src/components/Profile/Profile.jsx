@@ -12,15 +12,13 @@ export default function Profile({
 }) {
   return (
     <main className="profile">
-      <div className="profile__container">
-        <SideBar onSignOut={onSignOut} onEditProfile={onEditProfile} />
-        <ClothesSection
-          onCardClick={onCardClick}
-          clothingItems={clothingItems}
-          onAddClick={onAddClick}
-          onCardLike={onCardLike}
-        />
-      </div>
+      <SideBar onSignOut={onSignOut} onEditProfile={onEditProfile} />
+      <ClothesSection
+        onCardClick={onCardClick}
+        clothingItems={clothingItems}
+        onAddClick={onAddClick}
+        onCardLike={onCardLike}
+      />
     </main>
   );
 }
