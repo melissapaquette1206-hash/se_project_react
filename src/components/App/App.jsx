@@ -51,6 +51,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log("isLoggedIn:", isLoggedIn, "currentUser:", currentUser);
 
   const openModal = (name) => setActiveModal(name);
 
