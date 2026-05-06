@@ -35,7 +35,7 @@ function Header({ handleAddClick, weatherData, openLogin, openRegister }) {
         {isLoggedIn ? (
           <>
             <button
-              className="header__add-clothes-button"
+              className="button header__add-clothes-button"
               onClick={handleAddClick}
             >
               + Add clothes

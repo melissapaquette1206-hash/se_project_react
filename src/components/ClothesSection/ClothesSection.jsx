@@ -13,14 +13,14 @@ export default function ClothesSection({
       <div className="clothes-section__row">
         <p>Your items</p>
         <button
-          className="clothes-section__button"
+          className="button clothes-section__button"
           onClick={onAddClick}
           type="button"
         >
           + Add new
         </button>
       </div>
-      <ul className="clothes-section__items">
+      <ul className="button clothes-section__items">
         {clothingItems
           .filter((item) => item.owner === currentUser._id)
           .map((item) => {

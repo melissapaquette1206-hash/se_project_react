@@ -13,3 +13,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+
+  transition: opacity 0.3s ease;
+}
+
+.button:hover {
+  opacity: 0.6;
+}

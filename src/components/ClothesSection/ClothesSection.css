@@ -6,13 +6,13 @@
   margin: 0;
   border: hidden;
   background-color: #fff;
+  background: transparent;
   cursor: pointer;
+  gap: 20px;
 }
 
 .clothes-section__row {
   display: flex;
-  font-size: 20px;
-  line-height: 100%;
   margin: 0;
   font-size: 20px;
   font-weight: 700;

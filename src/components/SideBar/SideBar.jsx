@@ -16,10 +16,10 @@ export default function SideBar({ onEditProfile, onSignOut }) {
         />
       </div>
       <div className="sidebar__buttons">
-        <button className="sidebar__edit-button" onClick={onEditProfile}>
+        <button className="button sidebar__edit-button" onClick={onEditProfile}>
           Edit profile
         </button>
-        <button className="sidebar__signout-button" onClick={onSignOut}>
+        <button className="button sidebar__signout-button" onClick={onSignOut}>
           Sign out
         </button>
       </div>
