@@ -98,14 +98,15 @@ function App() {
       .catch(console.error);
   };
 
-  const onAddItem = (data) => {
+  const onAddItem = (data, resetForm) => {
     const token = localStorage.getItem("jwt");
     if (!token) return openModal("login");
 
     addItem(data, token)
       .then((item) => {
-        setClothingItems((prev) => [item, ...prev]);
+        setClothingItems((prev) => [item.data, ...prev]);
         closeAllModals();
+        if (resetForm) resetForm();
       })
       .catch(console.error);
   };

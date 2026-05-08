@@ -10,14 +10,14 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     : false;
 
   return (
-    <li className="card">
-      <button
+    <li className="card" onClick={() => onCardClick(item)}>
+      {/* <button
         className="card__image-button"
         onClick={() => onCardClick(item)}
         aria-label={`View ${item.name}`}
       >
         <img className="card__image" src={item.imageUrl} alt={item.name} />
-      </button>
+      </button> */}
 
       <div className="card__content">
         <h2 className="card__name">{item.name}</h2>
