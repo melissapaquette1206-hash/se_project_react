@@ -18,6 +18,7 @@ function LoginModal({ isOpen, onClose, onLogin, onSignUpClick }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText="Log In"
     >
       <label className="modal__label">
         Email
@@ -45,22 +46,13 @@ function LoginModal({ isOpen, onClose, onLogin, onSignUpClick }) {
         />
       </label>
 
-      <div className="modal__button-container">
-        <button
-          className="modal__submit-button"
-          type="submit"
-          disabled={!values.email || !values.password}
-        >
-          Log In
-        </button>
-        <button
-          className="modal__link-button"
-          type="button"
-          onClick={onSignUpClick}
-        >
-          or Sign Up
-        </button>
-      </div>
+      <button
+        type="button"
+        className="modal__switch-button"
+        onClick={onSignUpClick}
+      >
+        or Sign Up
+      </button>
     </ModalWithForm>
   );
 }

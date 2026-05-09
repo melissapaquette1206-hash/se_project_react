@@ -20,6 +20,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLogInClick }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText="Sign Up"
     >
       <label className="modal__label">
         <span className="modal__label-text">Email*</span>
@@ -71,26 +72,13 @@ function RegisterModal({ isOpen, onClose, onRegister, onLogInClick }) {
           required
         />
       </label>
-
-      <div className="modal__button-container">
-        <button
-          type="submit"
-          className="modal__submit-button"
-          disabled={
-            !values.email || !values.password || !values.name || !values.avatar
-          }
-        >
-          Sign Up
-        </button>
-
-        <button
-          type="button"
-          className="modal__link-button"
-          onClick={onLogInClick}
-        >
-          or Log In
-        </button>
-      </div>
+      <button
+        type="button"
+        className="modal__switch-button"
+        onClick={onLogInClick}
+      >
+        or Log In
+      </button>
     </ModalWithForm>
   );
 }

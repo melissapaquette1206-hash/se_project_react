@@ -1,5 +1,7 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 export default function ClothesSection({
   clothingItems,
@@ -7,6 +9,8 @@ export default function ClothesSection({
   onCardClick,
   onCardLike,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <div className="clothes-section">
       <div className="clothes-section__row">

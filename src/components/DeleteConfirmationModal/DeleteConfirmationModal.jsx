@@ -9,19 +9,18 @@ function DeleteConfirmationModal({ isOpen, onCancel, onConfirm }) {
 
   return (
     <ModalWithForm
-      title="Delete item"
-      name="confirm-delete"
-      buttonText="Yes, delete item"
+      title="Delete Item"
+      buttonText="Delete"
       isOpen={isOpen}
-      onClose={onCancel}
-      onSubmit={handleSubmit}
+      onClose={onClose}
+      onSubmit={handleDelete}
     >
       <p className="modal__confirm-text">
         Are you sure you want to delete this item?
         <br />
         This action is irreversible.
       </p>
-      <button type="button" className="modal__cancel" onClose={onCancel}>
+      <button type="button" className="modal__cancel" onClick={onCancel}>
         Cancel
       </button>
     </ModalWithForm>

@@ -11,18 +11,18 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   return (
     <li className="card" onClick={() => onCardClick(item)}>
-      {/* <button
+      <button
         className="card__image-button"
         onClick={() => onCardClick(item)}
         aria-label={`View ${item.name}`}
       >
         <img className="card__image" src={item.imageUrl} alt={item.name} />
-      </button> */}
+      </button>
 
       <div className="card__content">
         <h2 className="card__name">{item.name}</h2>
 
-        {currentUser?._id && (
+        {currentUser && (
           <button
             className={`card__like-button ${
               isLiked ? "card__like-button_active" : ""
