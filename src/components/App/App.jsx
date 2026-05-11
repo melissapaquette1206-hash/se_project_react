@@ -269,8 +269,8 @@ function App() {
 
           <DeleteConfirmationModal
             isOpen={activeModal === "confirm-delete"}
-            onConfirm={handleDeleteItem}
-            onCancel={closeAllModals}
+            handleDelete={handleDeleteItem}
+            onClose={closeAllModals}
           />
 
           <RegisterModal
