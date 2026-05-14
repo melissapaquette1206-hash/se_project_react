@@ -4,7 +4,7 @@ import "./DeleteConfirmationModal.css";
 function DeleteConfirmationModal({ isOpen, onClose, handleDelete }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onConfirm();
+    handleDelete();
   };
 
   return (
@@ -13,7 +13,7 @@ function DeleteConfirmationModal({ isOpen, onClose, handleDelete }) {
       buttonText="Delete"
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleDelete}
+      onSubmit={handleSubmit}
     >
       <p className="modal__confirm-text">
         Are you sure you want to delete this item?

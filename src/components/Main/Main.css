@@ -19,3 +19,9 @@
   font-weight: 700;
   line-height: 100%;
 }
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
+  gap: 20px;
+}
