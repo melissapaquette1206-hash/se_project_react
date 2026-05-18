@@ -120,9 +120,9 @@ function App() {
         setClothingItems((items) =>
           items.filter((item) => item._id !== cardToDelete._id),
         );
+        closeAllModals();
       })
-      .catch(console.error)
-      .finally(closeAllModals);
+      .catch(console.error);
   };
 
   const handleLogin = ({ email, password }) => {

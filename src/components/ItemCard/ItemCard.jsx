@@ -24,10 +24,11 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
         {currentUser && (
           <button
-            className={`card__like-button ${
-              isLiked ? "card__like-button_active" : ""
-            }`}
-            onClick={() => onCardLike(item)}
+            className={`card__like-button ${isLiked ? "card__like-button_active" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCardLike(item);
+            }}
             aria-label="Like item"
           />
         )}
