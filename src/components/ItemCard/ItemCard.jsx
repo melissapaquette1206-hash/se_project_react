@@ -19,20 +19,18 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         <img className="card__image" src={item.imageUrl} alt={item.name} />
       </button>
 
-      <div className="card__content">
-        <h2 className="card__name">{item.name}</h2>
+      <h2 className="card__name">{item.name}</h2>
 
-        {currentUser && (
-          <button
-            className={`card__like-button ${isLiked ? "card__like-button_active" : ""}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              onCardLike(item);
-            }}
-            aria-label="Like item"
-          />
-        )}
-      </div>
+      {currentUser && (
+        <button
+          className={`card__like-button ${isLiked ? "card__like-button_active" : ""}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onCardLike(item);
+          }}
+          aria-label="Like item"
+        />
+      )}
     </li>
   );
 }

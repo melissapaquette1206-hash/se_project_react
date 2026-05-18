@@ -60,3 +60,30 @@
   font-size: 16px;
   padding: 0;
 }
+
+.modal__switch-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-left: 12px;
+
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+}
+
+.modal__switch-button:hover {
+  opacity: 0.7;
+}
+
+.modal__buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+}

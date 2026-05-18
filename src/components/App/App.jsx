@@ -92,7 +92,7 @@ function App() {
     request
       .then((updatedCard) => {
         setClothingItems((items) =>
-          items.map((item) => (item._id === _id ? updatedCard : item)),
+          items.map((item) => (item._id === _id ? updatedCard.data : item)),
         );
       })
       .catch(console.error);
