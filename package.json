@@ -12,6 +12,8 @@
     "deploy": "npm run build && scp -r ./dist/* melissapaquette1206@melissapaquette-wtwr-express.jumpingcrab.com:/home/melissapaquette1206/frontend"
   },
   "dependencies": {
+    "celebrate": "^15.0.3",
+    "joi": "^18.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.3"
